@@ -77,12 +77,13 @@ def show_pokemon(request, pokemon_id):
             pokemon_entity.pokemon.image.path
         )
 
-    pokemon_info = {
+    rendered_pokemon = {
         "id": pokemon.id,
         "title_ru": pokemon.title,
-        "img_url": request.build_absolute_uri(f'/media/{pokemon.image}')
+        "img_url": request.build_absolute_uri(f'/media/{pokemon.image}'),
+        "description": pokemon.description
     }
 
     return render(request, 'pokemon.html', context={
-        'map': folium_map._repr_html_(), 'pokemon': pokemon_info
+        'map': folium_map._repr_html_(), 'pokemon': rendered_pokemon
     })
