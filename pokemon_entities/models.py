@@ -1,3 +1,4 @@
+from unittest.mock import DEFAULT
 from django.db import models  # noqa F401
 
 # your models here
@@ -7,6 +8,7 @@ class Pokemon(models.Model):
     title_en = models.CharField(max_length=200, null=True, blank=True)
     image = models.ImageField(blank=True)
     description = models.CharField(max_length=500, null=True, blank=True)
+    previous_evolution = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.title
