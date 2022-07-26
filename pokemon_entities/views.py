@@ -93,11 +93,11 @@ def show_pokemon(request, pokemon_id):
             "img_url": request.build_absolute_uri(f'/media/{pokemon.previous_evolution.image}'),
         }
 
-    if pokemon.next_evolution.all():
+    if pokemon.next_evolutions.all():
         rendered_pokemon["next_evolution"] = {
-            "title_ru": pokemon.next_evolution.get().title,
-            "pokemon_id": pokemon.next_evolution.get().id,
-            "img_url": request.build_absolute_uri(f'/media/{pokemon.next_evolution.get().image}'),
+            "title_ru": pokemon.next_evolutions.get().title,
+            "pokemon_id": pokemon.next_evolutions.get().id,
+            "img_url": request.build_absolute_uri(f'/media/{pokemon.next_evolutions.get().image}'),
         }
 
 
