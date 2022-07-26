@@ -61,7 +61,7 @@ def show_pokemon(request, pokemon_id):
     except Pokemon.DoesNotExist:
         return HttpResponseNotFound(('<h1>Такой покемон не найден</h1>'))
 
-    pokemons_entities = PokemonEntity.objects.filter(appeared_at__lt=localtime(), disappeared_at__gt=localtime(), pokemon__id=pokemon_id)
+    pokemons_entities = pokemon.pokemon_entities.filter(appeared_at__lt=localtime(), disappeared_at__gt=localtime(), pokemon__id=pokemon_id)
     folium_map = folium.Map(location=MOSCOW_CENTER, zoom_start=12)
     for pokemon_entity in pokemons_entities:
         add_pokemon(
